@@ -7,7 +7,7 @@ import com.revature.northsouthbank.util.ScreenRouter;
 
 import java.io.BufferedReader;
 
-public class LoginScreen extends Screen{
+public class LoginScreen extends Screen {
 
     private final UserService userService;
 
