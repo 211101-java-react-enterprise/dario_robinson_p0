@@ -9,7 +9,7 @@ import com.revature.northsouthbank.util.datasource.ConnectionFactory;
 import java.sql.*;
 import java.util.UUID;
 
-public class BankDAO implements CrudDAO<Transactions> {
+public class TransactionsDAO implements CrudDAO<Transactions> {
 
     public List<Transactions> findAccountsByAccountHolderId(String accountHolderId) {
 
