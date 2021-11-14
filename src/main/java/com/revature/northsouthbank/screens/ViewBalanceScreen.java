@@ -1,10 +1,21 @@
 package com.revature.northsouthbank.screens;
 
-public class ViewBalanceScreen {
-    int balance = 0;
+import com.revature.northsouthbank.util.ScreenRouter;
 
-    public void viewBalance() {
-        System.out.println("Hello, welcome to NorthSouth Bank!");
-        System.out.println("Your balance is " + "$" + balance);
+import java.io.BufferedReader;
+
+public class ViewBalanceScreen extends Screen {
+
+    double newUserBalance = 0.00;
+
+    public ViewBalanceScreen(BufferedReader consoleReader, ScreenRouter router) {
+        super ("ViewBalanceScreen", "/balance", consoleReader, router);
     }
+
+    @Override
+    public void render() throws Exception {
+
+
+    }
+
 }
