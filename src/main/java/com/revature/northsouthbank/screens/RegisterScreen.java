@@ -21,19 +21,19 @@ public class RegisterScreen extends Screen {
     public void render() throws Exception {
         System.out.println("You have selected Register.");
         System.out.println("Please provide us with some basic information.");
-        System.out.println("First name: ");
+        System.out.print("First name: ");
         String firstName = consoleReader.readLine();
 
-        System.out.println("Last name: ");
+        System.out.print("Last name: ");
         String lastName = consoleReader.readLine();
 
-        System.out.println("Email: ");
+        System.out.print("Email: ");
         String email = consoleReader.readLine();
 
-        System.out.println("Username: ");
+        System.out.print("Username: ");
         String username = consoleReader.readLine();
 
-        System.out.println("Password: ");
+        System.out.print("Password: ");
         String password = consoleReader.readLine();
 
         System.out.printf("Provided user first and last name: {\"firstName\": %s, \"lastName\": %s}\n", firstName, lastName);

@@ -1,5 +1,6 @@
 package com.revature.northsouthbank.screens;
 
+import com.revature.northsouthbank.util.AppState;
 import com.revature.northsouthbank.util.ScreenRouter;
 
 import java.io.BufferedReader;
@@ -30,10 +31,10 @@ public class WelcomeScreen extends Screen {
                 break;
             case "3":
                 System.out.println("Exiting...");
-                shutdown();
+                AppState.shutdown();
                 break;
             case "throw exception":
-                throw new RunTimeException();
+                throw new RuntimeException();
             default:
                 System.out.println("You have made an invalid selection, please try again!");
         }
