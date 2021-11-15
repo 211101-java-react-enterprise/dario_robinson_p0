@@ -11,17 +11,18 @@ public class WithdrawScreen extends Screen {
 
     public WithdrawScreen(BufferedReader consoleReader, ScreenRouter router, BankService bankService) {
 
-        super("WithdrawScreen", "/withdrawls", consoleReader, router);
+        super("WithdrawScreen", "/withdrawals", consoleReader, router);
         this.bankService = bankService;
     }
 
     @Override
     public void render() throws Exception {
         double withdrawAmount;
-        System.out.println("Hello! How much money would you like to withdraw today?\n" +
+        System.out.print("Hello! How much money would you like to withdraw today?\n" +
                             "Enter an amount here > ");
         withdrawAmount = Double.parseDouble(consoleReader.readLine());
-        System.out.println("You have withdrawn " + "$" + withdrawAmount + " into your account!");
+        System.out.println("You have withdrawn " + "$" + withdrawAmount + " from your account!");
+        System.out.println("Taking you back to dashboard...");
     }
 
 }

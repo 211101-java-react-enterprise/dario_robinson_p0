@@ -1,10 +1,9 @@
 package com.revature.northsouthbank.util;
 
 import com.revature.northsouthbank.daos.AppUserDAO;
-import com.revature.northsouthbank.screens.DashboardScreen;
-import com.revature.northsouthbank.screens.LoginScreen;
-import com.revature.northsouthbank.screens.RegisterScreen;
-import com.revature.northsouthbank.screens.WelcomeScreen;
+import com.revature.northsouthbank.daos.TransactionsDAO;
+import com.revature.northsouthbank.screens.*;
+import com.revature.northsouthbank.services.BankService;
 import com.revature.northsouthbank.services.UserService;
 import com.revature.northsouthbank.util.logging.Logger;
 
@@ -29,10 +28,18 @@ public class AppState {
         AppUserDAO userDAO = new AppUserDAO();
         UserService userService = new UserService(userDAO);
 
+        TransactionsDAO transactionsDAO = new TransactionsDAO();
+        BankService services = new BankService(transactionsDAO, userService);
+
         router.addScreen(new WelcomeScreen(consoleReader, router));
         router.addScreen(new RegisterScreen(consoleReader, router, userService));
         router.addScreen(new LoginScreen(consoleReader, router, userService));
         router.addScreen(new DashboardScreen(consoleReader, router, userService));
+
+        router.addScreen(new DepositScreen(consoleReader, router, services));
+        router.addScreen(new WithdrawScreen(consoleReader, router, services));
+
+        logger.log("Application initialized! Taking you to account screen...");
 
     }
 

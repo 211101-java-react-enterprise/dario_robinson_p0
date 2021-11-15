@@ -33,7 +33,7 @@ public class TransactionsDAO implements CrudDAO<Transactions> {
                 userTransactions.setId(rs.getString("account_id"));
                 userTransactions.setCurrentBalance(rs.getDouble("current_balance"));
                 userTransactions.setDeposits(rs.getDouble("deposits"));
-                userTransactions.setWithdrawls(rs.getDouble("withdrawls"));
+                userTransactions.setWithdrawals(rs.getDouble("withdrawals"));
                 accountHolder.setId(rs.getString("user_id"));
                 accountHolder.setFirstName(rs.getString("first_name"));
                 accountHolder.setLastName(rs.getString("last_name"));
@@ -56,12 +56,12 @@ public class TransactionsDAO implements CrudDAO<Transactions> {
 
             newAccount.setId(UUID.randomUUID().toString());
 
-            String sql = "insert into account_transactions (account_id, current_balance, deposits, withdrawls, account_holder_id) values (?, ?, ?, ?, ?)";
+            String sql = "insert into account_transactions (account_id, current_balance, deposits, withdrawals, account_holder_id) values (?, ?, ?, ?, ?)";
             PreparedStatement pstmt = conn.prepareStatement(sql);
             pstmt.setString(1, newAccount.getId());
             pstmt.setDouble(2, newAccount.getCurrentBalance());
             pstmt.setDouble(3, newAccount.getDeposits());
-            pstmt.setDouble(4, newAccount.getWithdrawls());
+            pstmt.setDouble(4, newAccount.getWithdrawals());
             pstmt.setString(5, newAccount.getAccountHolder().getId());
 
             int rowsInserted = pstmt.executeUpdate();
@@ -94,7 +94,7 @@ public class TransactionsDAO implements CrudDAO<Transactions> {
                 transaction.setId(rs.getString("account_id"));
                 transaction.setCurrentBalance(rs.getDouble("current_balance"));
                 transaction.setDeposits(rs.getDouble("deposits"));
-                transaction.setWithdrawls(rs.getDouble("withdrawls"));
+                transaction.setWithdrawals(rs.getDouble("withdrawals"));
                 accountHolder.setId(rs.getString("user_id"));
                 accountHolder.setFirstName(rs.getString("first_name"));
                 accountHolder.setLastName(rs.getString("last_name"));

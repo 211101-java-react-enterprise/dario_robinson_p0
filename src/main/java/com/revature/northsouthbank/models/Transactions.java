@@ -5,23 +5,23 @@ public class Transactions {
     private String id;
     private double currentBalance;
     private double deposits;
-    private double withdrawls;
+    private double withdrawals;
     private AppUser accountHolder;
 
 
-    public Transactions(double currentBalance, double deposits, double withdrawls) {
+    public Transactions(double currentBalance, double deposits, double withdrawals) {
         this.currentBalance = currentBalance;
         this.deposits = deposits;
-        this.withdrawls = withdrawls;
+        this.withdrawals = withdrawals;
     }
 
-    public Transactions(double currentBalance, double deposits, double withdrawls, AppUser accountHolder) {
-        this(currentBalance, deposits, withdrawls);
+    public Transactions(double currentBalance, double deposits, double withdrawals, AppUser accountHolder) {
+        this(currentBalance, deposits, withdrawals);
         this.accountHolder = accountHolder;
     }
 
-    public Transactions(String id, double currentBalance, double deposits, double withdrawls, AppUser accountHolder) {
-        this(currentBalance, deposits, withdrawls, accountHolder);
+    public Transactions(String id, double currentBalance, double deposits, double withdrawals, AppUser accountHolder) {
+        this(currentBalance, deposits, withdrawals, accountHolder);
         this.id = id;
     }
 
@@ -53,12 +53,12 @@ public class Transactions {
         this.deposits = deposits;
     }
 
-    public double getWithdrawls() {
-        return withdrawls;
+    public double getWithdrawals() {
+        return withdrawals;
     }
 
-    public void setWithdrawls(double withdrawls) {
-        this.withdrawls = withdrawls;
+    public void setWithdrawals(double withdrawls) {
+        this.withdrawals = withdrawals;
     }
 
     public AppUser getAccountHolder() {
