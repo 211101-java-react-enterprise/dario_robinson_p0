@@ -35,9 +35,9 @@ public class AppState {
         router.addScreen(new RegisterScreen(consoleReader, router, userService));
         router.addScreen(new LoginScreen(consoleReader, router, userService));
         router.addScreen(new DashboardScreen(consoleReader, router, userService));
-        router.addScreen(new ViewBalanceScreen(consoleReader, router, services));
-        router.addScreen(new DepositScreen(consoleReader, router, services));
-        router.addScreen(new WithdrawScreen(consoleReader, router, services));
+        router.addScreen(new ViewBalanceScreen(consoleReader, router, userService));
+        router.addScreen(new DepositScreen(consoleReader, router, userService));
+        router.addScreen(new WithdrawScreen(consoleReader, router, userService));
 
         logger.log("Application initialized! Taking you to account screen...");
 

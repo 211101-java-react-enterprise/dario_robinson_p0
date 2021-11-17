@@ -40,6 +40,7 @@ public class TransactionsDAO implements CrudDAO<Transactions> {
                 accountHolder.setEmail(rs.getString("email"));
                 accountHolder.setUsername(rs.getString("username"));
                 userTransactions.setAccountHolder(accountHolder);
+                transactions.add(userTransactions);
             }
 
         } catch (SQLException e) {
@@ -101,7 +102,7 @@ public class TransactionsDAO implements CrudDAO<Transactions> {
                 accountHolder.setEmail(rs.getString("email"));
                 accountHolder.setUsername(rs.getString("username"));
                 transaction.setAccountHolder(accountHolder);
-
+                transactions.add(transaction);
             }
         } catch (SQLException e) {
             e.printStackTrace();

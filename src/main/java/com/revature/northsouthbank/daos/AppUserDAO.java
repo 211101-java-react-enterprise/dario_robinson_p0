@@ -28,6 +28,7 @@ public class AppUserDAO implements CrudDAO<AppUser> {
                 user.setEmail(rs.getString("email"));
                 user.setUsername(rs.getString("username"));
                 user.setPassword(rs.getString("password"));
+                user.setCurrent_balance(rs.getDouble("current_balance"));
                 return user;
             }
 
@@ -55,6 +56,7 @@ public class AppUserDAO implements CrudDAO<AppUser> {
                 user.setEmail(rs.getString("email"));
                 user.setUsername(rs.getString("username"));
                 user.setPassword(rs.getString("password"));
+                user.setCurrent_balance(rs.getDouble("current_balance"));
                 return user;
             }
 
@@ -134,7 +136,25 @@ public class AppUserDAO implements CrudDAO<AppUser> {
 
     @Override
     public boolean update(AppUser updatedOBJ) {
-        return false;
+
+        try (Connection conn = ConnectionFactory.getInstance().getConnection()) {
+            String sql = "update bank_accounts " +
+                        "set current_balance = ? " +
+                        "where id = ?;";
+            PreparedStatement pstmt = conn.prepareStatement(sql);
+
+            pstmt.setString(1, updatedOBJ.getId());
+            pstmt.setString(7, Double.toString(updatedOBJ.getCurrent_balance()));
+
+            pstmt.executeUpdate();
+
+
+            return true;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
+
     }
 
     @Override

@@ -1,17 +1,17 @@
 package com.revature.northsouthbank.screens;
 
-import com.revature.northsouthbank.services.BankService;
+import com.revature.northsouthbank.services.UserService;
 import com.revature.northsouthbank.util.ScreenRouter;
 
 import java.io.BufferedReader;
 
-import static com.revature.northsouthbank.screens.ViewBalanceScreen.balance;
+import static com.revature.northsouthbank.screens.ViewBalanceScreen.current_balance;
 
 public class DepositScreen extends Screen {
 
-    private final BankService bankService;
+    private final UserService bankService;
 
-    public DepositScreen(BufferedReader consoleReader, ScreenRouter router, BankService bankService) {
+    public DepositScreen(BufferedReader consoleReader, ScreenRouter router, UserService bankService) {
         super("DepositScreen", "/deposits", consoleReader, router);
         this.bankService = bankService;
     }
@@ -20,15 +20,15 @@ public class DepositScreen extends Screen {
     public void render() throws Exception {
         try {
             double depositAmount;
-        System.out.println("Hello! Your current balance is " + "$" + balance + ".");
+        System.out.println("Hello! Your current balance is " + "$" + current_balance + ".");
         System.out.println(" ");
         System.out.print("How much money would you like to deposit today?\n" +
                             "Enter an amount here > ");
         depositAmount = Double.parseDouble(consoleReader.readLine());
         System.out.println("You have deposited " + "$" + depositAmount + " into your account!");
         System.out.println(" ");
-        balance = balance + depositAmount;
-        System.out.println("Your new balance is: " + "$" + balance);
+        current_balance = current_balance + depositAmount;
+        System.out.println("Your new balance is: " + "$" + current_balance);
         System.out.println(" ");
         System.out.println("Taking you back to dashboard...");
         } catch (NumberFormatException n) {

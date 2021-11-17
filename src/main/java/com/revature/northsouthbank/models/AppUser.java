@@ -10,6 +10,7 @@ public class AppUser extends Object {
     private String email;
     private String username;
     private String password;
+    private Double current_balance;
 
     public AppUser(String firstName, String lastName, String email, String username, String password) {
         this.firstName = firstName;
@@ -17,12 +18,13 @@ public class AppUser extends Object {
         this.email = email;
         this.username = username;
         this.password = password;
+
     }
 
-    public AppUser(String id, String firstName, String lastName, String email, String username, String password) {
+    public AppUser(String id, String firstName, String lastName, String email, String username, String password, Double current_balance) {
         this(firstName, lastName, email, username, password);
         this.id = id;
-
+        this.current_balance = current_balance;
     }
 
     public AppUser() {
@@ -75,6 +77,14 @@ public class AppUser extends Object {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public Double getCurrent_balance() {
+        return current_balance;
+    }
+
+    public void setCurrent_balance(Double current_balance) {
+        this.current_balance = current_balance;
     }
 
     public String toFileString() {
