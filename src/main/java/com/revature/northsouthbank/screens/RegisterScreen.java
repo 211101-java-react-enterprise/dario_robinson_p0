@@ -6,13 +6,14 @@ import com.revature.northsouthbank.models.AppUser;
 import com.revature.northsouthbank.services.UserService;
 import com.revature.northsouthbank.util.ScreenRouter;
 import com.revature.northsouthbank.util.logging.Logger;
+import java.util.Date;
 import java.io.BufferedReader;
 
 public class RegisterScreen extends Screen {
 
     private final Logger logger;
     private final UserService userService;
-
+    Date currentDate = new Date();
     public RegisterScreen(BufferedReader consoleReader, ScreenRouter router, UserService userService) {
         super("RegisterScreen", "/register", consoleReader, router);
         this.userService = userService;
@@ -45,13 +46,13 @@ public class RegisterScreen extends Screen {
 
         try {
             userService.registerNewUser(newUser);
-            logger.log("Registration successful!");
+            logger.log(currentDate, "Registration successful!");
             System.out.println("Registration successful!");
             router.navigate("/login");
         } catch (InvalidRequestException | ResourcePersistenceException e) {
             System.out.println(e.getMessage());
 
-            logger.log("Registration unsuccessful.");
+            logger.log(currentDate,"Registration unsuccessful.");
         } catch (Exception e) {
             e.printStackTrace();
         }

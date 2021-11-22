@@ -6,7 +6,7 @@ import com.revature.northsouthbank.screens.*;
 import com.revature.northsouthbank.services.BankService;
 import com.revature.northsouthbank.services.UserService;
 import com.revature.northsouthbank.util.logging.Logger;
-
+import java.util.Date;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 
@@ -15,11 +15,11 @@ public class AppState {
     private final Logger logger;
     private static boolean appRunning;
     private final ScreenRouter router;
-
+    Date currentDate = new Date();
     public AppState() {
 
         logger = Logger.getLogger(true);
-        logger.log("Initializing application...");
+        logger.log(currentDate, "Initializing application...");
 
         appRunning = true;
         router = new ScreenRouter();
@@ -39,7 +39,7 @@ public class AppState {
         router.addScreen(new DepositScreen(consoleReader, router, userService));
         router.addScreen(new WithdrawScreen(consoleReader, router, userService));
 
-        logger.log("Application initialized! Taking you to account screen...");
+        logger.log(currentDate, "Application initialized! Taking you to account screen...");
 
     }
 

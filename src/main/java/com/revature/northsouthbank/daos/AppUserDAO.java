@@ -4,10 +4,7 @@ import com.revature.northsouthbank.models.AppUser;
 import com.revature.northsouthbank.util.collections.List;
 import com.revature.northsouthbank.util.datasource.ConnectionFactory;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.UUID;
 
 public class AppUserDAO implements CrudDAO<AppUser> {
@@ -29,6 +26,7 @@ public class AppUserDAO implements CrudDAO<AppUser> {
                 user.setUsername(rs.getString("username"));
                 user.setPassword(rs.getString("password"));
                 user.setCurrent_balance(rs.getDouble("current_balance"));
+
                 return user;
             }
 
@@ -57,6 +55,7 @@ public class AppUserDAO implements CrudDAO<AppUser> {
                 user.setUsername(rs.getString("username"));
                 user.setPassword(rs.getString("password"));
                 user.setCurrent_balance(rs.getDouble("current_balance"));
+
                 return user;
             }
 
@@ -103,7 +102,7 @@ public class AppUserDAO implements CrudDAO<AppUser> {
 
             newUser.setId(UUID.randomUUID().toString());
 
-            String sql = "insert into bank_accounts (user_id, first_name, last_name, email, username, password) values (?, ?, ?, ?, ?, ?)";
+            String sql = "insert into bank_accounts (user_id, first_name, last_name, email, username, password, date_created) values (?, ?, ?, ?, ?, ?, ?)";
             PreparedStatement pstmt = conn.prepareStatement(sql);
             pstmt.setString(1, newUser.getId());
             pstmt.setString(2, newUser.getFirstName());
@@ -111,7 +110,7 @@ public class AppUserDAO implements CrudDAO<AppUser> {
             pstmt.setString(4, newUser.getEmail());
             pstmt.setString(5, newUser.getUsername());
             pstmt.setString(6, newUser.getPassword());
-
+            pstmt.setDate(7, (Date) newUser.getCurrent_date());
             int rowsInserted = pstmt.executeUpdate();
 
             if (rowsInserted != 0) {

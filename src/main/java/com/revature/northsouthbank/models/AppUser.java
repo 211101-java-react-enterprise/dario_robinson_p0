@@ -1,5 +1,6 @@
 package com.revature.northsouthbank.models;
 
+import java.util.Date;
 import java.util.Objects;
 
 public class AppUser extends Object {
@@ -11,7 +12,7 @@ public class AppUser extends Object {
     private String username;
     private String password;
     private Double current_balance;
-
+    private Date current_date;
     public AppUser(String firstName, String lastName, String email, String username, String password) {
         this.firstName = firstName;
         this.lastName = lastName;
@@ -21,10 +22,11 @@ public class AppUser extends Object {
 
     }
 
-    public AppUser(String id, String firstName, String lastName, String email, String username, String password, Double current_balance) {
+    public AppUser(String id, String firstName, String lastName, String email, String username, String password) {
         this(firstName, lastName, email, username, password);
         this.id = id;
         this.current_balance = current_balance;
+
     }
 
     public AppUser() {
@@ -85,6 +87,14 @@ public class AppUser extends Object {
 
     public void setCurrent_balance(Double current_balance) {
         this.current_balance = current_balance;
+    }
+
+    public Date getCurrent_date() {
+        return current_date;
+    }
+
+    public void setCurrent_date() {
+        this.current_date = current_date;
     }
 
     public String toFileString() {

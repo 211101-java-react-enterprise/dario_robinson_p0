@@ -2,21 +2,26 @@ package com.revature.northsouthbank.screens;
 
 import com.revature.northsouthbank.services.UserService;
 import com.revature.northsouthbank.util.ScreenRouter;
+import com.revature.northsouthbank.util.logging.Logger;
 
 import java.io.BufferedReader;
+import java.util.Date;
 
 public class ViewBalanceScreen extends Screen {
 
     public static double current_balance = 0;
     private final UserService userService;
-
+    private final Logger logger;
+    Date currentDate = new Date();
     public ViewBalanceScreen(BufferedReader consoleReader, ScreenRouter router, UserService userService) {
         super("ViewBalanceScreen", "/balance", consoleReader, router);
         this.userService = userService;
+        logger = Logger.getLogger(true);
     }
 
     @Override
     public void render() throws Exception {
+        logger.log(currentDate, "Attempting to View Balance...");
         System.out.println("Hello! Your current balance is " + "$" + current_balance);
         System.out.println(" ");
         System.out.println("What would you like to do now?");
@@ -28,6 +33,7 @@ public class ViewBalanceScreen extends Screen {
 
         System.out.print(balanceMenu);
 
+        logger.log(currentDate, "Check Balance successful!");
         String balanceSelection = consoleReader.readLine();
 
         switch (balanceSelection) {
